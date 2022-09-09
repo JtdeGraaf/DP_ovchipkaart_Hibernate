@@ -63,6 +63,7 @@ public class Reiziger {
                     .append(" ")
                     .append(adres.getPostcode());
         }
+        else {reiziger.append(")");}
         return reiziger.toString();
     }
 

@@ -12,14 +12,9 @@ public class Main {
         String username = "postgres";
         String password = "1103";
         Connection conn = DriverManager.getConnection(url, username, password);
-//        Reiziger reiziger = new Reiziger(11, "P", "de", "Graaf", LocalDate.of(2003,3,11));
-//        reiziger.setAdres(new Adres(11, "3254WP", "33", "weg", "Amo"));
-//        ReizigerDAOPsql rdaop = new ReizigerDAOPsql(conn);
-        AdresDAOPsql adao = new AdresDAOPsql(conn);
-        System.out.println(adao.findAll());
-//        System.out.println(rdaop.update(reiziger));
-//        adao.save(new Adres(10, "3254WP", "33", "straat", "Amo"));
-//        testReizigerDAO(new ReizigerDAOPsql(conn));
+
+        testReizigerDAO(new ReizigerDAOPsql(conn));
+        testAdresDAO(new AdresDAOPsql(conn));
 
     }
 
@@ -43,14 +38,17 @@ public class Main {
         System.out.println(reizigers.size() + " reizigers\n");
 
         // Voeg aanvullende tests van de ontbrekende CRUD-operaties in.
+        System.out.println("---------------------------------------");
         System.out.println("Eerst " + reizigers.size() + " reizigers");
         rdao.delete(sietske);
         reizigers = rdao.findAll();
         System.out.println("Na delete " + reizigers.size() + " reizigers\n");
+        System.out.println("---------------------------------------");
 
         System.out.println("FindById Test\n" +
                 "Zoeken op Id = 1\n" +
                 rdao.findById(1));
+        System.out.println("---------------------------------------");
 
         System.out.println("\nFindByGbDatum Test\n" +
                 "Zoeken op geboortedatum 1998-08-11\n" +
@@ -60,6 +58,45 @@ public class Main {
     }
 
     private static void testAdresDAO(AdresDAO adao){
+        System.out.println("\n---------- Test AdresDAO -------------");
+
+        // Haal alle adressen op uit de database
+        List<Adres> adressen = adao.findAll();
+        System.out.println("[Test] AdresDAO.findAll() geeft de volgende Adressen:");
+        for (Adres a : adressen) {
+            System.out.println(a);
+        }
+        System.out.println();
+
+        Adres adres = new Adres(100, "3872DJ", "67", "Boers Straat", "Utrecht");
+        System.out.print("[Test] Eerst " + adressen.size() + " adressen, na AdresDAO.save() ");
+        adao.save(adres);
+        adressen = adao.findAll();
+        System.out.println(adressen.size() + " adressen\n");
+
+
+        System.out.println("---------------------------------------");
+        System.out.println("Eerst " + adressen.size() + " adressen");
+        adao.delete(adres);
+        adressen = adao.findAll();
+        System.out.println("Na AdresDAO.delete() " + adressen.size() + " reizigers\n");
+        System.out.println("---------------------------------------\n");
+
+        Adres oudAdres = new Adres(100, "3872DJ", "67", "Boers Straat", "Utrecht");
+        adao.save(oudAdres);
+        System.out.println("Adressen:");
+        System.out.println(adao.findAll());
+        System.out.println("\nOud adres: "+ oudAdres);
+        Adres niewAdres =new Adres(100, "5472DX", "33", "Boers Weg", "Amsterdam");
+        adao.update(niewAdres);
+        System.out.println("\nNa adresDAO.update() zou het nieuwe adres postcode 5472DX moeten hebben\n");
+        System.out.println(adao.findAll());
+        adao.delete(niewAdres);
+
+        System.out.println("---------------------------------------\n");
+        System.out.println("FindByReiziger test postcode: 6707AA \n");
+        Reiziger reiziger = new Reiziger(3, "H", null, "Lubben", LocalDate.of(1998, 8, 11));
+        System.out.println("Resultaat: " + adao.findByReiziger(reiziger));
     }
 }
 
