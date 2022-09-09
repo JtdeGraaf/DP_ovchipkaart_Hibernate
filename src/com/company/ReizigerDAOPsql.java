@@ -13,6 +13,7 @@ import java.util.List;
 
 public class ReizigerDAOPsql implements ReizigerDAO{
     private Connection conn;
+    private AdresDAO adao;
 
     ReizigerDAOPsql(Connection conn){
         this.conn = conn;
@@ -27,11 +28,12 @@ public class ReizigerDAOPsql implements ReizigerDAO{
                     reiziger.getAchternaam() + "', '" + reiziger.getGeboortedatum() + "')";
 
             statement.executeUpdate(queryString);
+            adao = new AdresDAOPsql(conn);
+            adao.save(reiziger.getAdres());
 
             return true;
         }
         catch(SQLException E){
-            System.out.println(E.getMessage());
             return false;
         }
     }
@@ -45,9 +47,13 @@ public class ReizigerDAOPsql implements ReizigerDAO{
                     "achternaam = '" + reiziger.getAchternaam() + "', " +
                     "geboortedatum = '" + reiziger.getGeboortedatum().toString() + "' " +
                     "WHERE reiziger_id = " + reiziger.getId());
+
+            adao = new AdresDAOPsql(conn);
+            adao.update(reiziger.getAdres());
             return true;
         }
         catch(SQLException E){
+            System.out.println(E.getMessage());
             return false;
         }
     }
@@ -55,11 +61,15 @@ public class ReizigerDAOPsql implements ReizigerDAO{
     @Override
     public boolean delete(Reiziger reiziger) {
         try {
+            adao = new AdresDAOPsql(conn);
+            adao.delete(reiziger.getAdres());
             Statement statement = conn.createStatement();
             statement.executeUpdate("DELETE FROM reiziger WHERE reiziger_id = " + reiziger.getId());
+
             return true;
         }
         catch(SQLException E) {
+            System.out.println(E.getMessage());
             return false;
         }
     }

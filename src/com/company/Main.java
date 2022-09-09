@@ -12,8 +12,14 @@ public class Main {
         String username = "postgres";
         String password = "1103";
         Connection conn = DriverManager.getConnection(url, username, password);
-
-        testReizigerDAO(new ReizigerDAOPsql(conn));
+//        Reiziger reiziger = new Reiziger(11, "P", "de", "Graaf", LocalDate.of(2003,3,11));
+//        reiziger.setAdres(new Adres(11, "3254WP", "33", "weg", "Amo"));
+//        ReizigerDAOPsql rdaop = new ReizigerDAOPsql(conn);
+        AdresDAOPsql adao = new AdresDAOPsql(conn);
+        System.out.println(adao.findAll());
+//        System.out.println(rdaop.update(reiziger));
+//        adao.save(new Adres(10, "3254WP", "33", "straat", "Amo"));
+//        testReizigerDAO(new ReizigerDAOPsql(conn));
 
     }
 
@@ -52,4 +58,9 @@ public class Main {
 
 
     }
+
+    private static void testAdresDAO(AdresDAO adao){
+    }
 }
+
+
