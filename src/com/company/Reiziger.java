@@ -1,6 +1,7 @@
 package com.company;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Reiziger {
     private int id;
@@ -9,6 +10,7 @@ public class Reiziger {
     private String achternaam;
     private LocalDate geboortedatum;
     private Adres adres;
+    private ArrayList<OVChipkaart> OVChipkaarten;
 
     Reiziger(int id, String voorletters, String tussenvoegsel, String achternaam, LocalDate geboortedatum){
         this.id = id;
@@ -17,6 +19,7 @@ public class Reiziger {
         this.achternaam = achternaam;
         this.geboortedatum = geboortedatum;
         this.adres = null;
+        this.OVChipkaarten = new ArrayList<OVChipkaart>();
     }
     public int getId(){
         return id;

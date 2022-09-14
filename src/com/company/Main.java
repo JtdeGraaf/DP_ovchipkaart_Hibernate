@@ -10,7 +10,7 @@ public class Main {
 
         String url = "jdbc:postgresql://localhost/ovchip";
         String username = "postgres";
-        String password = "1103";
+        String password = "0000";
         Connection conn = DriverManager.getConnection(url, username, password);
 
         testReizigerDAO(new ReizigerDAOPsql(conn));
