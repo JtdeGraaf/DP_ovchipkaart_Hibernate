@@ -14,6 +14,7 @@ import java.util.List;
 public class ReizigerDAOPsql implements ReizigerDAO{
     private Connection conn;
     private AdresDAO adao;
+    private OVChipkaartDAOPsql odao;
 
     ReizigerDAOPsql(Connection conn){
         this.conn = conn;
@@ -30,6 +31,11 @@ public class ReizigerDAOPsql implements ReizigerDAO{
             statement.executeUpdate(queryString);
             adao = new AdresDAOPsql(conn);
             adao.save(reiziger.getAdres());
+
+            odao = new OVChipkaartDAOPsql(conn);
+            for(OVChipkaart ov : reiziger.getOVKaarten()){
+                odao.save(ov);
+            }
 
             return true;
         }
@@ -50,6 +56,12 @@ public class ReizigerDAOPsql implements ReizigerDAO{
 
             adao = new AdresDAOPsql(conn);
             adao.update(reiziger.getAdres());
+
+            odao = new OVChipkaartDAOPsql(conn);
+            for(OVChipkaart ov : reiziger.getOVKaarten()){
+                odao.update(ov);
+            }
+
             return true;
         }
         catch(SQLException E){
@@ -63,6 +75,12 @@ public class ReizigerDAOPsql implements ReizigerDAO{
         try {
             adao = new AdresDAOPsql(conn);
             adao.delete(reiziger.getAdres());
+
+            odao = new OVChipkaartDAOPsql(conn);
+            for(OVChipkaart ov : reiziger.getOVKaarten()){
+                odao.delete(ov);
+            }
+
             Statement statement = conn.createStatement();
             statement.executeUpdate("DELETE FROM reiziger WHERE reiziger_id = " + reiziger.getId());
 

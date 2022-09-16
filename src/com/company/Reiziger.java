@@ -77,4 +77,12 @@ public class Reiziger {
     public void setAdres(Adres adres){
         this.adres = adres;
     }
+
+    public void voegOVKaartToe(OVChipkaart ov){
+        this.OVChipkaarten.add(ov);
+    }
+
+    public ArrayList<OVChipkaart> getOVKaarten(){
+        return this.OVChipkaarten;
+    }
 }
