@@ -103,8 +103,27 @@ public class Main {
     private static void testOVChipkaartDAO(OVChipkaartDAO odao){
         System.out.println("\n\n\n\n --------- OVChipkaartDAO test --------");
         for (OVChipkaart ov : odao.findAll()) {
-            System.out.println(ov);
+            System.out.println(ov + "\n");
         }
+        Reiziger reiziger = new Reiziger(100, "JT", "de", "Graaf", LocalDate.of(2000,10,10));
+        System.out.println("\nOVChipKaart Save Test\n" +
+                "Voor de save " + odao.findAll().size() + " OV kaarten gevonden");
+        OVChipkaart ov = new OVChipkaart(12345, LocalDate.of(2023,10,10), 1, 30, reiziger);
+        odao.save(ov);
+        System.out.println("\nNa de save " + odao.findAll().size() + " OV kaarten gevonden");
+
+        System.out.println("\n\nOVChipkaart Update Test\n" +
+                "Na de update moet het saldo op 1000.00 staan");
+        OVChipkaart ovUpdate = new OVChipkaart(12345, LocalDate.of(2023,10,10), 1, 1000, reiziger);
+        odao.update(ovUpdate);
+        System.out.println("\nResultaat: " + odao.findByKaartnummer(12345));
+
+        System.out.println("\n\nOVChipkaart Delete Test\n" +
+                "Voor de delete " + odao.findAll().size() +" OV kaarten gevonden");
+        odao.delete(ov);
+        System.out.println("\nNa de delete " + odao.findAll().size() + " OV kaarten gevonden");
+
+
 
     }
 }

@@ -8,4 +8,5 @@ public interface OVChipkaartDAO {
     boolean update(OVChipkaart ov);
     boolean delete(OVChipkaart ov);
     ArrayList<OVChipkaart> findAll();
+    public OVChipkaart findByKaartnummer(int kaartnummer);
 }

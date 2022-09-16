@@ -25,12 +25,13 @@ public class OVChipkaartDAOPsql implements OVChipkaartDAO{
             Statement statement = conn.createStatement();
             String queryString = "INSERT INTO ov_chipkaart " +
                     "VALUES (" + ov.getKaartNummer() + ", '" + ov.getGeldigTot() + "', " + ov.getKlasse() + ", " +
-                    ov.getReiziger().getId() + ")";
+                    ov.getSaldo() + ", " + ov.getReiziger().getId() + ")";
 
             statement.executeUpdate(queryString);
             return true;
         }
         catch(SQLException E){
+            System.out.println(E.getMessage());
             return false;
         }
     }
@@ -87,6 +88,31 @@ public class OVChipkaartDAOPsql implements OVChipkaartDAO{
 
             }
             return OVKaarten;
+        }
+        catch(Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public OVChipkaart findByKaartnummer(int kaartnummer) {
+        try{
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * from ov_chipkaart WHERE kaart_nummer = " + kaartnummer);
+            ArrayList<OVChipkaart> OVKaarten = new ArrayList<OVChipkaart>();
+            while(rs.next()) {
+                int kaartNummer = rs.getInt("kaart_nummer");
+                Date date = rs.getDate("geldig_tot");
+                LocalDate geldigTot = Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+                int klasse = rs.getInt("klasse");
+                int saldo = rs.getInt("saldo");
+                int reiziger_id = rs.getInt("reiziger_id");
+
+                rdao = new ReizigerDAOPsql(conn);
+                OVKaarten.add(new OVChipkaart(kaartNummer, geldigTot, klasse, saldo, rdao.findById(reiziger_id)));
+
+            }
+            return OVKaarten.get(0);
         }
         catch(Exception e) {
             return null;
