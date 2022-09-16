@@ -1,9 +1,15 @@
 package com.company;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class OVChipkaartDAOPsql implements OVChipkaartDAO{
     private Connection conn;
@@ -63,6 +69,27 @@ public class OVChipkaartDAOPsql implements OVChipkaartDAO{
 
     @Override
     public ArrayList<OVChipkaart> findAll() {
-        return null;
+        try{
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * from ov_chipkaart");
+
+            ArrayList<OVChipkaart> OVKaarten = new ArrayList<OVChipkaart>();
+            while(rs.next()) {
+                int kaartNummer = rs.getInt("kaart_nummer");
+                Date date = rs.getDate("geldig_tot");
+                LocalDate geldigTot = Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+                int klasse = rs.getInt("klasse");
+                int saldo = rs.getInt("saldo");
+                int reiziger_id = rs.getInt("reiziger_id");
+
+                rdao = new ReizigerDAOPsql(conn);
+                OVKaarten.add(new OVChipkaart(kaartNummer, geldigTot, klasse, saldo, rdao.findById(reiziger_id)));
+
+            }
+            return OVKaarten;
+        }
+        catch(Exception e) {
+            return null;
+        }
     }
 }

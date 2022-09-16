@@ -37,4 +37,9 @@ public class OVChipkaart {
     public Reiziger getReiziger() {
         return reiziger;
     }
+
+    @Override
+    public String toString() {
+        return "Kaartnummer: " + kaartNummer + " - " + klasse + "e klasse, saldo: " + saldo + "\n deze kaart is van: " + reiziger;
+    }
 }

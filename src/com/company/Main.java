@@ -15,6 +15,7 @@ public class Main {
 
         testReizigerDAO(new ReizigerDAOPsql(conn));
         testAdresDAO(new AdresDAOPsql(conn));
+        testOVChipkaartDAO(new OVChipkaartDAOPsql(conn));
 
     }
 
@@ -58,7 +59,7 @@ public class Main {
     }
 
     private static void testAdresDAO(AdresDAO adao){
-        System.out.println("\n---------- Test AdresDAO -------------");
+        System.out.println("\n\n\n\n---------- Test AdresDAO -------------");
 
         // Haal alle adressen op uit de database
         List<Adres> adressen = adao.findAll();
@@ -97,6 +98,14 @@ public class Main {
         System.out.println("FindByReiziger test postcode: 6707AA \n");
         Reiziger reiziger = new Reiziger(3, "H", null, "Lubben", LocalDate.of(1998, 8, 11));
         System.out.println("Resultaat: " + adao.findByReiziger(reiziger));
+    }
+
+    private static void testOVChipkaartDAO(OVChipkaartDAO odao){
+        System.out.println("\n\n\n\n --------- OVChipkaartDAO test --------");
+        for (OVChipkaart ov : odao.findAll()) {
+            System.out.println(ov);
+        }
+
     }
 }
 
