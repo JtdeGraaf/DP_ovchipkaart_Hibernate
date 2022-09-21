@@ -1,4 +1,14 @@
-package com.company;
+package main;
+
+import main.adres.Adres;
+import main.adres.AdresDAO;
+import main.adres.AdresDAOPsql;
+import main.ovChipKaart.OVChipkaart;
+import main.ovChipKaart.OVChipkaartDAO;
+import main.ovChipKaart.OVChipkaartDAOPsql;
+import main.reiziger.Reiziger;
+import main.reiziger.ReizigerDAO;
+import main.reiziger.ReizigerDAOPsql;
 
 import java.sql.*;
 import java.time.LocalDate;

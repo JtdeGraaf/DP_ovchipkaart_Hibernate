@@ -1,4 +1,7 @@
-package com.company;
+package main.reiziger;
+
+import main.adres.Adres;
+import main.ovChipKaart.OVChipkaart;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,7 +15,7 @@ public class Reiziger {
     private Adres adres;
     private ArrayList<OVChipkaart> OVChipkaarten;
 
-    Reiziger(int id, String voorletters, String tussenvoegsel, String achternaam, LocalDate geboortedatum){
+    public Reiziger(int id, String voorletters, String tussenvoegsel, String achternaam, LocalDate geboortedatum){
         this.id = id;
         this.voorletters = voorletters;
         this.tussenvoegsel = tussenvoegsel;

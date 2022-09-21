@@ -1,21 +1,20 @@
-package com.company;
+package main.adres;
+
+import main.reiziger.Reiziger;
+import main.reiziger.ReizigerDAOPsql;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class AdresDAOPsql implements AdresDAO{
+public class AdresDAOPsql implements AdresDAO {
     private Connection conn;
     private ReizigerDAOPsql rdao;
 
-    AdresDAOPsql(Connection conn){
+    public AdresDAOPsql(Connection conn){
         this.conn = conn;
     }
 

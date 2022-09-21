@@ -1,4 +1,9 @@
-package com.company;
+package main.reiziger;
+
+import main.adres.AdresDAO;
+import main.adres.AdresDAOPsql;
+import main.ovChipKaart.OVChipkaart;
+import main.ovChipKaart.OVChipkaartDAOPsql;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,12 +16,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ReizigerDAOPsql implements ReizigerDAO{
+public class ReizigerDAOPsql implements ReizigerDAO {
     private Connection conn;
     private AdresDAO adao;
     private OVChipkaartDAOPsql odao;
 
-    ReizigerDAOPsql(Connection conn){
+    public ReizigerDAOPsql(Connection conn){
         this.conn = conn;
     }
 

@@ -1,4 +1,6 @@
-package com.company;
+package main.ovChipKaart;
+
+import main.reiziger.Reiziger;
 
 import java.time.LocalDate;
 
@@ -9,7 +11,7 @@ public class OVChipkaart {
     private double saldo;
     private Reiziger reiziger;
 
-    OVChipkaart(int kaartNummer, LocalDate geldigTot, int klasse, double saldo, Reiziger reiziger){
+    public OVChipkaart(int kaartNummer, LocalDate geldigTot, int klasse, double saldo, Reiziger reiziger){
         this.kaartNummer = kaartNummer;
         this.geldigTot = geldigTot;
         this.klasse = klasse;

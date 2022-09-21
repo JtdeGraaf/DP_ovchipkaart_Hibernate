@@ -1,4 +1,6 @@
-package com.company;
+package main.ovChipKaart;
+
+import main.reiziger.ReizigerDAOPsql;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,13 +11,12 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-public class OVChipkaartDAOPsql implements OVChipkaartDAO{
+public class OVChipkaartDAOPsql implements OVChipkaartDAO {
     private Connection conn;
     private ReizigerDAOPsql rdao;
 
-    OVChipkaartDAOPsql(Connection conn){
+    public OVChipkaartDAOPsql(Connection conn){
         this.conn = conn;
     }
 

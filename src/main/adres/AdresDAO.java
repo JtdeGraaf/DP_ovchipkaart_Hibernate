@@ -1,4 +1,6 @@
-package com.company;
+package main.adres;
+
+import main.reiziger.Reiziger;
 
 import java.util.List;
 

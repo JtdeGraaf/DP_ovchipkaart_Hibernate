@@ -1,4 +1,4 @@
-package com.company;
+package main.adres;
 
 public class Adres {
     private int id;
@@ -7,7 +7,7 @@ public class Adres {
     private String straat;
     private String woonplaats;
 
-    Adres(int id, String postcode, String huisnummer, String straat, String woonplaats){
+    public Adres(int id, String postcode, String huisnummer, String straat, String woonplaats){
         this.id = id;
         this.postcode = postcode;
         this.huisnummer = huisnummer;

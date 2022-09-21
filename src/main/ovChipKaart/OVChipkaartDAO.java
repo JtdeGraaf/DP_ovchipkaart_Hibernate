@@ -1,7 +1,6 @@
-package com.company;
+package main.ovChipKaart;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public interface OVChipkaartDAO {
     boolean save(OVChipkaart ov);

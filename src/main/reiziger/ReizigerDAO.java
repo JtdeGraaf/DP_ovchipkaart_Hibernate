@@ -1,4 +1,4 @@
-package com.company;
+package main.reiziger;
 
 
 import java.util.List;
