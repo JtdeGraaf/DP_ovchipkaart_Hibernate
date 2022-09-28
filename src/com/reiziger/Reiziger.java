@@ -1,7 +1,7 @@
-package main.reiziger;
+package com.reiziger;
 
-import main.adres.Adres;
-import main.ovChipKaart.OVChipkaart;
+import com.adres.Adres;
+import com.ovchipkaart.OVChipkaart;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

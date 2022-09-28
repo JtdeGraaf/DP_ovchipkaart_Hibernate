@@ -1,4 +1,4 @@
-package main.adres;
+package com.adres;
 
 public class Adres {
     private int id;

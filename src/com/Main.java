@@ -1,16 +1,18 @@
-package main;
+package com;
 
-import main.adres.Adres;
-import main.adres.AdresDAO;
-import main.adres.AdresDAOPsql;
-import main.ovChipKaart.OVChipkaart;
-import main.ovChipKaart.OVChipkaartDAO;
-import main.ovChipKaart.OVChipkaartDAOPsql;
-import main.reiziger.Reiziger;
-import main.reiziger.ReizigerDAO;
-import main.reiziger.ReizigerDAOPsql;
+import com.adres.Adres;
+import com.adres.AdresDAO;
+import com.adres.AdresDAOPsql;
+import com.ovchipkaart.OVChipkaart;
+import com.ovchipkaart.OVChipkaartDAO;
+import com.ovchipkaart.OVChipkaartDAOPsql;
+import com.reiziger.Reiziger;
+import com.reiziger.ReizigerDAO;
+import com.reiziger.ReizigerDAOPsql;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 

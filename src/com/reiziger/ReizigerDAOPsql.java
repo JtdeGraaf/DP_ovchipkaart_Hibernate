@@ -1,9 +1,9 @@
-package main.reiziger;
+package com.reiziger;
 
-import main.adres.AdresDAO;
-import main.adres.AdresDAOPsql;
-import main.ovChipKaart.OVChipkaart;
-import main.ovChipKaart.OVChipkaartDAOPsql;
+import com.adres.AdresDAO;
+import com.adres.AdresDAOPsql;
+import com.ovchipkaart.OVChipkaart;
+import com.ovchipkaart.OVChipkaartDAOPsql;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -70,7 +70,7 @@ public class ReizigerDAOPsql implements ReizigerDAO {
             return true;
         }
         catch(SQLException E){
-            System.out.println(E.getMessage());
+            E.printStackTrace();
             return false;
         }
     }
@@ -92,7 +92,7 @@ public class ReizigerDAOPsql implements ReizigerDAO {
             return true;
         }
         catch(SQLException E) {
-            System.out.println(E.getMessage());
+            E.printStackTrace();
             return false;
         }
     }

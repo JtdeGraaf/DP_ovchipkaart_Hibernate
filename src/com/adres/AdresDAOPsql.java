@@ -1,7 +1,7 @@
-package main.adres;
+package com.adres;
 
-import main.reiziger.Reiziger;
-import main.reiziger.ReizigerDAOPsql;
+import com.reiziger.Reiziger;
+import com.reiziger.ReizigerDAOPsql;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

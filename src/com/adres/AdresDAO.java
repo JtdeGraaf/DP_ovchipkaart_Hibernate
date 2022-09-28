@@ -1,6 +1,6 @@
-package main.adres;
+package com.adres;
 
-import main.reiziger.Reiziger;
+import com.reiziger.Reiziger;
 
 import java.util.List;
 

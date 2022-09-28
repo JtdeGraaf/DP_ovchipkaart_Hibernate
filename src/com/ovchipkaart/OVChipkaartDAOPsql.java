@@ -1,6 +1,6 @@
-package main.ovChipKaart;
+package com.ovchipkaart;
 
-import main.reiziger.ReizigerDAOPsql;
+import com.reiziger.ReizigerDAOPsql;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -50,7 +50,7 @@ public class OVChipkaartDAOPsql implements OVChipkaartDAO {
             return true;
         }
         catch(SQLException E){
-            System.out.println(E.getMessage());
+            E.printStackTrace();
             return false;
         }
     }
@@ -59,12 +59,13 @@ public class OVChipkaartDAOPsql implements OVChipkaartDAO {
     public boolean delete(OVChipkaart ov) {
         try {
             Statement statement = conn.createStatement();
-            statement.executeUpdate("DELETE FROM ov_chipkaart WHERE kaart_nummer = " + ov.getKaartNummer());
+            statement.executeUpdate("DELETE FROM ov_chipkaart WHERE kaart_nummer = " + ov.getKaartNummer() + ";" +
+                    "DELETE FROM ov_chipkaart_product where kaart_nummer = " + ov.getKaartNummer());
 
             return true;
         }
         catch(SQLException E) {
-            System.out.println(E.getMessage());
+            E.printStackTrace();
             return false;
         }
     }
@@ -91,6 +92,7 @@ public class OVChipkaartDAOPsql implements OVChipkaartDAO {
             return OVKaarten;
         }
         catch(Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
@@ -116,6 +118,7 @@ public class OVChipkaartDAOPsql implements OVChipkaartDAO {
             return OVKaarten.get(0);
         }
         catch(Exception e) {
+            e.printStackTrace();
             return null;
         }
     }

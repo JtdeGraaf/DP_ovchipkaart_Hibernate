@@ -1,4 +1,4 @@
-package main.reiziger;
+package com.reiziger;
 
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package main.ovChipKaart;
+package com.ovchipkaart;
 
 import java.util.ArrayList;
 

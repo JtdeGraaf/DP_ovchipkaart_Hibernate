@@ -1,8 +1,10 @@
-package main.ovChipKaart;
+package com.ovchipkaart;
 
-import main.reiziger.Reiziger;
+import com.product.Product;
+import com.reiziger.Reiziger;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class OVChipkaart {
     private int kaartNummer;
@@ -10,6 +12,7 @@ public class OVChipkaart {
     private int klasse;
     private double saldo;
     private Reiziger reiziger;
+    private ArrayList<Product> producten;
 
     public OVChipkaart(int kaartNummer, LocalDate geldigTot, int klasse, double saldo, Reiziger reiziger){
         this.kaartNummer = kaartNummer;
@@ -18,6 +21,7 @@ public class OVChipkaart {
         this.saldo = saldo;
         this.reiziger = reiziger;
         this.reiziger.voegOVKaartToe(this);
+        this.producten = new ArrayList<>();
     }
 
     public int getKaartNummer() {
@@ -43,5 +47,17 @@ public class OVChipkaart {
     @Override
     public String toString() {
         return "Kaartnummer: " + kaartNummer + " - " + klasse + "e klasse, saldo: " + saldo + "\n deze kaart is van: " + reiziger;
+    }
+
+    public ArrayList<Product> getProducten(){
+        return this.producten;
+    }
+
+    public void voegProductToe(Product product){
+        this.producten.add(product);
+    }
+
+    public void verwijderProduct(Product product){
+        this.producten.remove(product);
     }
 }
