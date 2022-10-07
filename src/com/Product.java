@@ -1,6 +1,6 @@
-package com.product;
+package com;
 
-import com.ovchipkaart.OVChipkaart;
+import com.OVChipkaart;
 
 import java.util.ArrayList;
 

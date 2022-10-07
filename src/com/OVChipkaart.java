@@ -1,7 +1,4 @@
-package com.ovchipkaart;
-
-import com.product.Product;
-import com.reiziger.Reiziger;
+package com;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

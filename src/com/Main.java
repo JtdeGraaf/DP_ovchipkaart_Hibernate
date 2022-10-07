@@ -1,12 +1,9 @@
 package com;
 
-import com.adres.Adres;
 import com.adres.AdresDAO;
 import com.adres.AdresDAOPsql;
-import com.ovchipkaart.OVChipkaart;
 import com.ovchipkaart.OVChipkaartDAO;
 import com.ovchipkaart.OVChipkaartDAOPsql;
-import com.reiziger.Reiziger;
 import com.reiziger.ReizigerDAO;
 import com.reiziger.ReizigerDAOPsql;
 
